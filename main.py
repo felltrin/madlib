@@ -1,14 +1,8 @@
-import tkinter as tk
+from gui import GUI
 
 
 def main():
-    root = tk.Tk()
-    root.geometry("300x300")
-
-
-
-
-    root.mainloop()
+    gui = GUI()
     print("Hello World!")
 
 
