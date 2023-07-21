@@ -14,7 +14,7 @@ class GUI:
         self.noun_two_text = None
 
         self.root = tk.Tk()
-        self.root.geometry("300x300")
+        self.root.geometry("350x350")
         self.root.title("Madlib")
 
         self.label_frame = tk.Frame(self.root)
@@ -35,6 +35,7 @@ class GUI:
 
     def submit_adjective(self):
         self.adjective = self.adjective_text.get('1.0', tk.END)
+        self.adjective = self.adjective.strip()
 
         self.label_frame.destroy()
         self.submit_button.destroy()
@@ -55,6 +56,7 @@ class GUI:
 
     def submit_person_in_room(self):
         self.person_in_room = self.person_in_room_text.get('1.0', tk.END)
+        self.person_in_room = self.person_in_room.strip()
 
         self.label_frame.destroy()
         self.submit_button.destroy()
@@ -75,6 +77,7 @@ class GUI:
 
     def submit_noun_one(self):
         self.noun_one = self.noun_one_text.get('1.0', tk.END)
+        self.noun_one = self.noun_one.strip()
 
         self.label_frame.destroy()
         self.submit_button.destroy()
@@ -96,14 +99,17 @@ class GUI:
 
     def submit_final_entry(self):
         self.noun_two = self.noun_two_text.get('1.0', tk.END)
+        self.noun_two = self.noun_two.strip()
 
         self.label_frame.destroy()
         self.submit_button.destroy()
+
+        # self.root.geometry("500x500")
 
         madlib_text = "This Thanksgiving, I'm thankful for all the " + self.adjective + \
                       " things in my life. Even though I complain about how " + self.person_in_room + \
                       " is always getting on my nerves, or how my " + self.noun_one + \
                       " homework is boring, or how I hate cleaning my " + self.noun_two + "."
 
-        final_label = tk.Label(self.root, text=madlib_text, font=("Sans Serif", 18))
+        final_label = tk.Label(self.root, text=madlib_text, font=("Sans Serif", 16), wraplength=300)
         final_label.pack(padx=10, pady=10)
