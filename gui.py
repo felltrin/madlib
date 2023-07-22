@@ -9,6 +9,7 @@ class GUI:
         self.person_in_room = None
         self.noun_one = None
         self.noun_two = None
+        self.noun_three = None
 
         self.root = tk.Tk()
         self.root.geometry("350x350")
@@ -58,11 +59,21 @@ class GUI:
 
         self.label["text"] = "Enter another noun:"
         self.label["font"] = ("Sans Serif", 16)
+        self.submit_button.config(command=self.submit_noun_two)
+
+    def submit_noun_two(self):
+        self.noun_two = self.text.get('1.0', tk.END)
+        self.noun_two = self.noun_two.strip()
+
+        self.text.delete('1.0', "end")
+
+        self.label["text"] = "Enter one more noun:"
+        self.label["font"] = ("Sans Serif", 16)
         self.submit_button.config(command=self.submit_final_entry)
 
     def submit_final_entry(self):
-        self.noun_two = self.text.get('1.0', tk.END)
-        self.noun_two = self.noun_two.strip()
+        self.noun_three = self.text.get('1.0', tk.END)
+        self.noun_three = self.noun_three.strip()
 
         self.label_frame.destroy()
         self.submit_button.destroy()
@@ -70,7 +81,8 @@ class GUI:
         madlib_text = "This Thanksgiving, I'm thankful for all the " + self.adjective + \
                       " things in my life. Even though I complain about how " + self.person_in_room + \
                       " is always getting on my nerves, or how my " + self.noun_one + \
-                      " homework is boring, or how I hate cleaning my " + self.noun_two + "."
+                      " homework is boring, or how I hate cleaning my " + self.noun_two + ", I know I am " \
+                      "a very lucky " + self.noun_three + "."
 
         final_label = tk.Label(self.root, text=madlib_text, font=("Sans Serif", 16), wraplength=300)
         final_label.pack(padx=10, pady=10)
